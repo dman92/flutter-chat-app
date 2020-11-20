@@ -1,9 +1,11 @@
 import 'package:chat_app/widgets/btn_pink.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:chat_app/widgets/custom_input.dart';
 import 'package:chat_app/widgets/custom_labels.dart';
 import 'package:chat_app/widgets/custom_logo.dart';
+import 'package:chat_app/services/auth_service.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -71,7 +73,12 @@ class __FormState extends State<_Form> {
           //TODO: Crear boton
           BtnPink( 
             text:'Entrar',
-            fcn: (){print("hola");}
+            fcn: () {
+
+              final authService = Provider.of<AuthService>(context, listen: false);
+              authService.login( emailCtrl.text, passCtrl.text);
+
+            }
           ),
 
         ],
